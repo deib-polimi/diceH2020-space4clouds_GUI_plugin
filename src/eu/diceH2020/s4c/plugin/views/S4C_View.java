@@ -12,6 +12,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 //import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
@@ -20,6 +21,9 @@ import org.eclipse.ui.part.ViewPart;
 
 import eu.diceH2020.s4c.plugin.other.JsonToJava;
 
+/**
+ * @author ciavotta This View shows the widgets to interact with SPACE4Cloud WS
+ */
 public class S4C_View extends ViewPart {
 	public static final String ID = "S4C_View";
 
@@ -32,46 +36,41 @@ public class S4C_View extends ViewPart {
 
 		// setup the layout of top to be GridLayout.
 		GridLayout layout = new GridLayout();
-		layout.marginHeight = 0;
-		layout.marginWidth = 0;
+		layout.marginHeight = 10;
+		layout.marginWidth = 10;
+		layout.numColumns = 2;
 		top.setLayout(layout);
 
 		// top banner
-		Composite banner = new Composite(top, SWT.NONE);// banner is added to
+		Composite panel = new Composite(top, SWT.NONE);// banner is added to
 		// "top"
-		banner.setLayoutData(
-				new GridData(GridData.HORIZONTAL_ALIGN_FILL, GridData.VERTICAL_ALIGN_BEGINNING, true, false));
-		layout = new GridLayout();
-		layout.marginHeight = 5;
-		layout.marginWidth = 10;
+		GridData panelGridData = new GridData(GridData.HORIZONTAL_ALIGN_FILL, GridData.VERTICAL_ALIGN_BEGINNING, true,
+				false);
+		panelGridData.grabExcessHorizontalSpace = true;
+		panelGridData.grabExcessVerticalSpace = true;
+		panel.setLayoutData(panelGridData);
+		GridLayout gridLayout = new GridLayout();
+		gridLayout.marginHeight = 5;
+		gridLayout.marginWidth = 5;
+		gridLayout.numColumns = 2;
+		gridLayout.makeColumnsEqualWidth = true;
+		panel.setLayout(gridLayout);
 
-		layout.numColumns = 2;
-		banner.setLayout(layout);
-
-		GridData gridData = new GridData();
-		gridData.horizontalAlignment = SWT.FILL;
-		gridData.minimumWidth = 400;
-		gridData.minimumHeight = 500;
-		gridData.grabExcessHorizontalSpace = true;
-
-		final FileChooser fileChooser = new FileChooser(banner);
-		gridData.heightHint = 25;
+		final FileChooser fileChooser = new FileChooser(panel);
 
 		// first button
-		Button runButton = new Button(banner, SWT.WRAP);
-		runButton.setText("Select a File");
-
+		Button selectButton = new Button(panel, SWT.WRAP);
+		selectButton.setText("Select a File");
+		
 		// message contents
-		final Text text = new Text(top, SWT.MULTI | SWT.WRAP);
+		final Text text = new Text(panel, SWT.MULTI | SWT.BORDER);
 		// here like the banner, text is added to "top".
-		text.setText("");
 		text.setLayoutData(new GridData(GridData.FILL_BOTH));
-
+		
 		// Declaration of button run
-		runButton.addListener(SWT.Selection, new Listener() {
+		selectButton.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
-				String list = null;
-				list = fileChooser.getText();
+				String list = fileChooser.getText();
 				String temp = list;
 				text.append(temp + "\n");
 				lstNameFiles = list;
@@ -84,15 +83,16 @@ public class S4C_View extends ViewPart {
 			}
 		});
 
-		Button run1Button = new Button(banner, SWT.WRAP);
+
+		Button run1Button = new Button(panel, SWT.WRAP);
 		run1Button.setText("send file");
 
 		// message contents
-		final Text tex = new Text(top, SWT.MULTI | SWT.WRAP);
+		//final Text tex = new Text(top, SWT.MULTI | SWT.WRAP);
 
-		// here like the banner, text is added to "top".
-		tex.setText("000");
-		tex.setLayoutData(new GridData(GridData.FILL_BOTH));
+		// // here like the banner, text is added to "top".
+		// tex.setText("000");
+		// tex.setLayoutData(new GridData(GridData.FILL_BOTH));
 
 		run1Button.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
@@ -118,15 +118,15 @@ public class S4C_View extends ViewPart {
 			}
 		});
 
-		Button rnButton = new Button(banner, SWT.WRAP);
+		Button rnButton = new Button(panel, SWT.WRAP);
 		rnButton.setText("send first file");
 
 		// message contents
-//		final Text tx = new Text(top, SWT.MULTI | SWT.WRAP);
-//
-//		// here like the banner, text is added to "top".
-//		tx.setText("000");
-//		tx.setLayoutData(new GridData(GridData.FILL_BOTH));
+		// final Text tx = new Text(top, SWT.MULTI | SWT.WRAP);
+		//
+		// // here like the banner, text is added to "top".
+		// tx.setText("000");
+		// tx.setLayoutData(new GridData(GridData.FILL_BOTH));
 
 		rnButton.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
@@ -135,14 +135,14 @@ public class S4C_View extends ViewPart {
 			}
 		});
 
-		Button rubutton = new Button(banner, SWT.WRAP);
+		Button rubutton = new Button(panel, SWT.WRAP);
 		rubutton.setText("ask state");
 
-//		// message contents
-//		final Text texi = new Text(top, SWT.MULTI | SWT.WRAP);
-//		// here like the banner, text is added to "top".
-//		texi.setText("000");
-//		texi.setLayoutData(new GridData(GridData.FILL_BOTH));
+		// // message contents
+		// final Text texi = new Text(top, SWT.MULTI | SWT.WRAP);
+		// // here like the banner, text is added to "top".
+		// texi.setText("000");
+		// texi.setLayoutData(new GridData(GridData.FILL_BOTH));
 
 		rubutton.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
@@ -171,7 +171,7 @@ public class S4C_View extends ViewPart {
 			}
 		});
 
-		Button rButton = new Button(banner, SWT.WRAP);
+		Button rButton = new Button(panel, SWT.WRAP);
 		rButton.setText("reset state");
 
 		// final Label label = new Label(parent, SWT.NONE);

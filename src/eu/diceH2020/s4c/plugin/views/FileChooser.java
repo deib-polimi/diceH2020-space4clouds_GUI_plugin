@@ -12,11 +12,15 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Text;
 
+/**
+ * @author ciavotta
+ * Create a composite object that is a Text widget and a button
+ */
 public class FileChooser extends Composite {
 
-	Text mText;
-	Button mButton;
-	String title = null;
+	private Text mText;
+	private Button mButton;
+	private String title = null;
 
 	public FileChooser(Composite parent) {
 		super(parent, SWT.NULL);
@@ -25,17 +29,25 @@ public class FileChooser extends Composite {
 
 	public void createContent() {
 		GridLayout layout = new GridLayout(2, false);
-		setLayout(layout);
+		this.setLayout(layout);
 
 		mText = new Text(this, SWT.SINGLE | SWT.BORDER);
-		GridData gd = new GridData(GridData.FILL_BOTH);
-		gd.grabExcessHorizontalSpace = true;
-		gd.horizontalAlignment = GridData.FILL;
-		mText.setLayoutData(gd);
+		GridData textDataGrid = new GridData(GridData.FILL_BOTH);
+		textDataGrid.grabExcessHorizontalSpace = true;
+		textDataGrid.horizontalAlignment = GridData.FILL;
+		mText.setLayoutData(textDataGrid);
 
 
 		mButton = new Button(this, SWT.NONE);
 		mButton.setText("...");
+		GridData buttonGridData = new GridData();
+		buttonGridData.verticalAlignment = GridData.FILL;
+		buttonGridData.horizontalAlignment = GridData.FILL;
+		buttonGridData.grabExcessVerticalSpace = true;
+		buttonGridData.grabExcessHorizontalSpace = true;
+		buttonGridData.horizontalSpan = 1;
+
+		mButton.setLayoutData(buttonGridData);
 		mButton.addSelectionListener(new SelectionListener() {
 
 			public void widgetSelected(SelectionEvent e) {
