@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: SPACE4Cloud_GUI_Plugin
+Bundle-SymbolicName: SPACE4Cloud_GUI_Plugin;singleton:=true
+Bundle-Version: 0.0.1
+Bundle-Activator: eu.diceH2020.s4c.plugin.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.debug.core;bundle-version="3.9.1",
+ org.eclipse.emf.ecore;bundle-version="2.10.2",
+ org.eclipse.ui.console;bundle-version="3.5.300"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: target/dependency/commons-io-2.4.jar,
+ target/dependency/jackson-core-asl-1.9.13.jar,
+ target/dependency/jackson-mapper-asl-1.9.13.jar,
+ target/dependency/javax.json-1.0.4.jar,
+ target/dependency/org.eclipse.persistence.asm-2.6.0.jar,
+ target/dependency/org.eclipse.persistence.core-2.6.0.jar,
+ target/dependency/org.eclipse.persistence.moxy-2.6.0.jar,
+ target/dependency/validation-api-1.1.0.Final.jar,
+ .,
+ icons/
+Export-Package: eu.diceH2020.s4c.plugin;uses:="org.osgi.framework,org.eclipse.jface.resource,org.eclipse.ui.plugin",
+ eu.diceH2020.s4c.plugin.views;uses:="org.eclipse.swt.widgets,org.eclipse.ui.part"
+Bundle-Vendor: Politecnico di Milano
