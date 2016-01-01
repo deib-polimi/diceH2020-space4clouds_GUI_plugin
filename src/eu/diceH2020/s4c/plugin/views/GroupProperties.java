@@ -1,18 +1,16 @@
 package eu.diceH2020.s4c.plugin.views;
 
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.layout.RowData;
-import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Composite;
 
 class GroupProperties extends Composite {
 
-	private textExtended address;
-
-	private textExtended port;
 
 	private FileChooser propertiesFile;
+
+	private PropertiesSingleton prop = PropertiesSingleton.getInstance();
 
 	public GroupProperties(Composite parent, int style) {
 		super(parent, SWT.NO_BACKGROUND | SWT.BORDER);
@@ -21,8 +19,9 @@ class GroupProperties extends Composite {
 		layout.numColumns = 1;
 		layout.makeColumnsEqualWidth = true;
 		this.setLayout(layout);
-		address = new textExtended(this, "Backend address");
-		port = new textExtended(this, "Backend port");
+		prop.setAddress(new TextExtended(this, "Backend address"));
+		prop.setPort(new TextExtended(this, "Backend port"));		
+
 		Composite emptyPanel = new Composite(this, SWT.BORDER);
 		GridData panelGridData = new GridData();
 		panelGridData.horizontalAlignment = SWT.FILL;
@@ -31,26 +30,12 @@ class GroupProperties extends Composite {
 		panelGridData.grabExcessVerticalSpace = true;
 		emptyPanel.setLayoutData(panelGridData);
 		// propertiesFile = new FileChooser(this);
-		SaveOpenButtons buttons = new SaveOpenButtons(this, address, port);
+		SaveOpenButtons buttons = new SaveOpenButtons(this);
 
-		// ((GridData) propertiesFile.getLayoutData()).verticalAlignment =
-		// SWT.DOWN;
+		
 
 	}
 
-	/**
-	 * @return the address
-	 */
-	public textExtended getAddress() {
-		return address;
-	}
-
-	/**
-	 * @return the port
-	 */
-	public textExtended getPort() {
-		return port;
-	}
 
 	/**
 	 * @return the propertiesFile

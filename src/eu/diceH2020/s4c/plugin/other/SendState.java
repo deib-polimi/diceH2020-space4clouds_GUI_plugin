@@ -8,6 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+
 public class SendState {
 	//public static State state;
 	public static void sendStateRunning(){
@@ -20,7 +21,8 @@ public class SendState {
 				conn.setRequestMethod("POST");
 				conn.setRequestProperty("Content-Type", "application/json");
 				
-				String str= JavaToJson.convertStateRunning();//state
+				String str = ""; 
+				//JavaToJson.convertStateRunning();//state
 				OutputStream os = conn.getOutputStream();
 				os.write(str.getBytes());
 				os.flush();

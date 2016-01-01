@@ -58,6 +58,7 @@ public class FileChooser extends Composite {
 		mButton.setLayoutData(buttonGridData);
 		mButton.addSelectionListener(new SelectionListener() {
 
+			@Override
 			public void widgetSelected(SelectionEvent e) {
 				FileDialog dlg = new FileDialog(mButton.getShell(),  SWT.OPEN  );
 				dlg.setText("Open");

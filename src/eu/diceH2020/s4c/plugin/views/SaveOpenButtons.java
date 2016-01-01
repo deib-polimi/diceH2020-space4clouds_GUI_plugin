@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Properties;
+import java.util.Timer;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
@@ -16,9 +17,15 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.FileDialog;
 
+import eu.diceH2020.s4c.plugin.other.State;
+import eu.diceH2020.s4c.plugin.other.StateChecker;
+import eu.diceH2020.s4c.plugin.other.StateHandler;
+
 public class SaveOpenButtons extends Composite {
 
-	public SaveOpenButtons(Composite parent, textExtended address, textExtended port) {
+	private PropertiesSingleton propSingleton = PropertiesSingleton.getInstance();
+	
+	public SaveOpenButtons(Composite parent) {
 		super(parent, SWT.BORDER);
 		GridLayout layout = new GridLayout(3, true);
 		layout.makeColumnsEqualWidth = true;
@@ -30,16 +37,17 @@ public class SaveOpenButtons extends Composite {
 		panelDataGrid.verticalAlignment = SWT.BOTTOM;
 		this.setLayoutData(panelDataGrid);
 		this.setSize(parent.getSize());
-		createContent(address, port);
+		createContent();
 
 	}
 
-	private void createContent(textExtended address, textExtended port) {
+	private void createContent() {
 		Button save = new Button(this, SWT.PUSH);
 		save.setText("Save");
 
 		save.addSelectionListener(new SelectionListener() {
 
+			@Override
 			public void widgetSelected(SelectionEvent e) {
 				FileDialog dlg = new FileDialog(save.getShell(), SWT.SAVE);
 				dlg.setText("Save");
@@ -55,8 +63,8 @@ public class SaveOpenButtons extends Composite {
 					output = new FileOutputStream(path);
 
 					// set the properties value
-					prop.setProperty("address", address.getTextBox().getText());
-					prop.setProperty("port", port.getTextBox().getText());
+					prop.setProperty("address", propSingleton.getAddressString());
+					prop.setProperty("port", propSingleton.getPortString());
 
 					// save properties to project root folder
 					prop.store(output, null);
@@ -81,6 +89,7 @@ public class SaveOpenButtons extends Composite {
 		open.setText("Open");
 		open.addSelectionListener(new SelectionListener() {
 
+			@Override
 			public void widgetSelected(SelectionEvent e) {
 				FileDialog dlg = new FileDialog(save.getShell(), SWT.OPEN);
 				dlg.setText("open");
@@ -92,10 +101,10 @@ public class SaveOpenButtons extends Composite {
 				Properties properties = new Properties();
 				try {
 					properties.load(new FileInputStream(path));
-					address.getTextBox().setText(properties.getProperty("address"));
-					port.getTextBox().setText(properties.getProperty("port"));
+					propSingleton.setAddressString(properties.getProperty("address"));
+					propSingleton.setPortString(properties.getProperty("port"));
 				} catch (IOException ex) {
-				}
+				} 
 			}
 
 			@Override
@@ -104,9 +113,35 @@ public class SaveOpenButtons extends Composite {
 
 			}
 		});
-	
+
 		Button connect = new Button(this, SWT.PUSH);
 		connect.setText("Connect");
+
+		connect.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				StateChecker checker = new StateChecker();
+				// running timer task as daemon thread
+				Timer scheduler = new Timer(true);
+				// in this way the timer task is executed in a cyclic
+				// way
+				scheduler.scheduleAtFixedRate(checker, 0, 10 * 1000);
+				System.out.println("TimerTask started");
+
+				// todo: this cannot work
+				StateHandler stateHandler = new StateHandler();
+				if (stateHandler.getCurrentState() == State.RUNNING)
+					scheduler.cancel();
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+				// TODO Fix this
+
+			}
+		});
+
 	}
 
 }
