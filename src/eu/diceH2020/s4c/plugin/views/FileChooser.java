@@ -23,13 +23,21 @@ public class FileChooser extends Composite {
 	private String title = null;
 
 	public FileChooser(Composite parent) {
-		super(parent, SWT.NULL);
+		super(parent, SWT.BORDER);
+		GridData gridData = new GridData(); 
+		gridData.grabExcessHorizontalSpace = true;
+		gridData.horizontalAlignment = SWT.LEFT;
+		gridData.verticalAlignment = SWT.END;
+		this.setLayoutData(gridData);
+		GridLayout layout = new GridLayout(2, false);
+		this.setLayout(layout);
+
+		//this.setSize(parent.getSize());		
 		createContent();
 	}
 
 	public void createContent() {
-		GridLayout layout = new GridLayout(2, false);
-		this.setLayout(layout);
+
 
 		mText = new Text(this, SWT.SINGLE | SWT.BORDER);
 		GridData textDataGrid = new GridData(GridData.FILL_BOTH);

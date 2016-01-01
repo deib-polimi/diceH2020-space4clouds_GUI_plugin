@@ -1,4 +1,4 @@
-package eu.diceH2020.s4c.plugin.views;
+package eu.diceH2020.s4c.plugin.other;
 
 import java.io.Serializable;
 

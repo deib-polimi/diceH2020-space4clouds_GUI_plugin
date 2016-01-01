@@ -1,4 +1,4 @@
-package eu.diceH2020.s4c.plugin.views;
+package eu.diceH2020.s4c.plugin.other;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,11 +8,9 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import eu.diceH2020.s4c.plugin.other.JavaToJson;
-
 public class SendState {
 	//public static State state;
-	public static void invio(){
+	public static void sendStateRunning(){
 		
 		 try {
 			 
@@ -22,7 +20,7 @@ public class SendState {
 				conn.setRequestMethod("POST");
 				conn.setRequestProperty("Content-Type", "application/json");
 				
-				String str= JavaToJson.convert();//state
+				String str= JavaToJson.convertStateRunning();//state
 				OutputStream os = conn.getOutputStream();
 				os.write(str.getBytes());
 				os.flush();

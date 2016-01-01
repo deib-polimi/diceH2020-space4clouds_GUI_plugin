@@ -1,4 +1,4 @@
-package eu.diceH2020.s4c.plugin.views;
+package eu.diceH2020.s4c.plugin.other;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -8,12 +8,11 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import eu.diceH2020.s4c.plugin.other.JsonToJava;
 
-
-class Caller{    
+public class RestInteractor{    
 	private static String output;
 
+	//TODO this part must be re-implemented using unirest and jackson
 	public static void askWebServer(URL endpoint) {
 		try {
 			HttpURLConnection conn = (HttpURLConnection) endpoint.openConnection();
