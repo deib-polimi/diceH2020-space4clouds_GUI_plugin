@@ -10,6 +10,7 @@ import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.swt.browser.Browser;
+import org.eclipse.swt.widgets.Display;
 import org.osgi.framework.Bundle;
 
 import eu.diceH2020.s4c.plugin.Activator;
@@ -36,11 +37,19 @@ public class StateChecker extends TimerTask {
 	@Override
 	public void run() {
 		System.out.println("Timer task started at:" + new Date());
-		BrowserExended br = prop.getBrowser();
-		if (RestInteractor.askRemoteState(url)) {
-			br.setPage("static/connected.html");
-		} else
-			br.setPage("static/home.html");
+		Display.getDefault().asyncExec(new Runnable() {
+			
+			@Override
+			public void run() {
+				BrowserExended br = prop.getBrowser();
+				if (RestInteractor.askRemoteState(url)) {
+					br.setPage("static/connected.html");
+				} else
+					br.setPage("static/home.html");
+				
+			}
+		});
+
 		System.out.println("Timer task finished at:" + new Date());
 	}
 

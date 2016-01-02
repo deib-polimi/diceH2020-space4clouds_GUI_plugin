@@ -18,44 +18,49 @@ import org.eclipse.swt.widgets.Text;
  */
 public class FileChooser extends Composite {
 
-	private Text mText;
+	private Text textBox;
 	private Button mButton;
 	private String title = null;
 
-	public FileChooser(Composite parent) {
+	public FileChooser(Composite parent, String label) {
 		super(parent, SWT.BORDER);
-		GridData gridData = new GridData(); 
-		gridData.grabExcessHorizontalSpace = true;
-		gridData.horizontalAlignment = SWT.LEFT;
-		gridData.verticalAlignment = SWT.END;
-		this.setLayoutData(gridData);
-		GridLayout layout = new GridLayout(2, false);
+		GridLayout layout = new GridLayout(4, true);
 		this.setLayout(layout);
-
-		//this.setSize(parent.getSize());		
-		createContent();
+		GridData panelDataGrid = new GridData();
+		panelDataGrid.grabExcessHorizontalSpace = true;
+		panelDataGrid.horizontalAlignment = SWT.FILL;
+		panelDataGrid.grabExcessVerticalSpace = false;
+		panelDataGrid.verticalAlignment = SWT.TOP;
+		this.setLayoutData(panelDataGrid);
+		this.setSize(parent.getSize());
+		createContent( label);
 	}
 
-	public void createContent() {
+	public void createContent(String label) {
 
 
-		mText = new Text(this, SWT.SINGLE | SWT.BORDER);
-		GridData textDataGrid = new GridData(GridData.FILL_BOTH);
+		textBox = new Text(this, SWT.SINGLE | SWT.BORDER| SWT.READ_ONLY);
+		GridData textDataGrid = new GridData();
+		textDataGrid.horizontalSpan = 2;
 		textDataGrid.grabExcessHorizontalSpace = true;
-		textDataGrid.horizontalAlignment = GridData.FILL;
-		mText.setLayoutData(textDataGrid);
+		textDataGrid.grabExcessVerticalSpace = true;
+		textDataGrid.verticalAlignment = SWT.FILL;
+		textDataGrid.horizontalAlignment = SWT.FILL;
+		textBox.setLayoutData(textDataGrid);
+		textBox.setSize(100, 10);
 
 
 		mButton = new Button(this, SWT.NONE);
-		mButton.setText("...");
-		GridData buttonGridData = new GridData();
-		buttonGridData.verticalAlignment = GridData.FILL;
-		buttonGridData.horizontalAlignment = GridData.FILL;
-		buttonGridData.grabExcessVerticalSpace = true;
-		buttonGridData.grabExcessHorizontalSpace = true;
-		buttonGridData.horizontalSpan = 1;
+		mButton.setText(label);
+		GridData buttonDataGrid = new GridData();
+		buttonDataGrid.horizontalSpan = 2;
+		buttonDataGrid.grabExcessHorizontalSpace = true;
+		buttonDataGrid.grabExcessVerticalSpace = true;
+		buttonDataGrid.verticalAlignment = SWT.FILL;
+		buttonDataGrid.horizontalAlignment = SWT.FILL;
+		mButton.setLayoutData(buttonDataGrid);
+	//	mButton.setSize(10, 10);
 
-		mButton.setLayoutData(buttonGridData);
 		mButton.addSelectionListener(new SelectionListener() {
 
 			@Override
@@ -64,7 +69,7 @@ public class FileChooser extends Composite {
 				dlg.setText("Open");
 				String path = dlg.open();
 				if (path == null) return;
-				mText.setText(path);
+				textBox.setText(path);
 			}
 
 			@Override
@@ -76,16 +81,16 @@ public class FileChooser extends Composite {
 	}
 
 	public String getText() {
-		return mText.getText();
+		return textBox.getText();
 
 	}
 
 	public Text getTextControl() {
-		return mText;		
+		return textBox;		
 	}
 
 	public File getFile() {
-		String text = mText.getText();
+		String text = textBox.getText();
 		if (text.length() == 0) return null;
 		return new File(text);
 	}

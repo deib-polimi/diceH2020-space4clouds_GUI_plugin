@@ -6,10 +6,6 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 
 class GroupProperties extends Composite {
-
-
-	private FileChooser propertiesFile;
-
 	private PropertiesSingleton prop = PropertiesSingleton.getInstance();
 
 	public GroupProperties(Composite parent, int style) {
@@ -19,29 +15,18 @@ class GroupProperties extends Composite {
 		layout.numColumns = 1;
 		layout.makeColumnsEqualWidth = true;
 		this.setLayout(layout);
+		//TODO implement check on the value the user will introduce. 
 		prop.setAddress(new TextExtended(this, "Backend address"));
 		prop.setPort(new TextExtended(this, "Backend port"));		
-
-		Composite emptyPanel = new Composite(this, SWT.BORDER);
-		GridData panelGridData = new GridData();
-		panelGridData.horizontalAlignment = SWT.FILL;
-		panelGridData.verticalAlignment = SWT.FILL;
-		panelGridData.grabExcessHorizontalSpace = true;
-		panelGridData.grabExcessVerticalSpace = true;
-		emptyPanel.setLayoutData(panelGridData);
+		prop.setUsername(new TextExtended(this, "Username (To be impl.)"));
+		prop.setPassword(new TextExtended(this, "Password (To be impl.)", SWT.PASSWORD));
+		prop.setAccuracy(new TextExtended(this, "Accuracy"));
+		prop.setCycles(new TextExtended(this, "Cycles"));
+		
+		new EmptyPanel(this);
 		// propertiesFile = new FileChooser(this);
 		SaveOpenButtons buttons = new SaveOpenButtons(this);
 
-		
-
-	}
-
-
-	/**
-	 * @return the propertiesFile
-	 */
-	public FileChooser getPropertiesFile() {
-		return propertiesFile;
 	}
 
 }

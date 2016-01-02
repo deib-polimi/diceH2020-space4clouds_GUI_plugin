@@ -50,10 +50,11 @@ public class S4C_View extends ViewPart {
 		ti1.setControl(new GroupProperties(tf, SWT.SHADOW_ETCHED_IN));
 
 		TabItem ti2 = new TabItem(tf, SWT.BORDER);
-		ti2.setText("Grid");
-		ti2.setControl(new GridComposite(tf));
+		ti2.setText("Command panel");
+		ti2.setControl(new GroupCommands(tf));
 
 		browser = new BrowserExended(topPanel, "static/home.html");
+		
 //		browser.setPage("static/home.html");
 		prop.setBrowser(browser);
 	}

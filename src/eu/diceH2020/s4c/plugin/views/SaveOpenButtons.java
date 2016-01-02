@@ -65,7 +65,10 @@ public class SaveOpenButtons extends Composite {
 					// set the properties value
 					prop.setProperty("address", propSingleton.getAddressString());
 					prop.setProperty("port", propSingleton.getPortString());
-
+					prop.setProperty("username", propSingleton.getUsernameString());
+					prop.setProperty("password", propSingleton.getPasswordString());
+					prop.setProperty("accuracy", propSingleton.getAccuracyString());
+					prop.setProperty("cycles", propSingleton.getCyclesString());
 					// save properties to project root folder
 					prop.store(output, null);
 				} catch (FileNotFoundException e1) {
@@ -103,6 +106,10 @@ public class SaveOpenButtons extends Composite {
 					properties.load(new FileInputStream(path));
 					propSingleton.setAddressString(properties.getProperty("address"));
 					propSingleton.setPortString(properties.getProperty("port"));
+					propSingleton.setUsernameString(properties.getProperty("username"));
+					propSingleton.setPasswordString(properties.getProperty("password"));
+					propSingleton.setAccuracyString(properties.getProperty("accuracy"));
+					propSingleton.setCyclesString(properties.getProperty("cycles"));
 				} catch (IOException ex) {
 				} 
 			}
