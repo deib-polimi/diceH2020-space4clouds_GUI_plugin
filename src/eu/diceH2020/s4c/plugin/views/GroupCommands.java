@@ -10,7 +10,8 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
-import eu.diceH2020.s4c.plugin.other.App;
+
+import eu.diceH2020.SPACE4Cloud_shared.InstanceData;
 import eu.diceH2020.s4c.plugin.other.SendState;
 import eu.diceH2020.s4c.plugin.other.Sender;
 import eu.diceH2020.s4c.plugin.other.State;

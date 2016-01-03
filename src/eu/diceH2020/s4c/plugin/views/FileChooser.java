@@ -59,7 +59,6 @@ public class FileChooser extends Composite {
 		buttonDataGrid.verticalAlignment = SWT.FILL;
 		buttonDataGrid.horizontalAlignment = SWT.FILL;
 		mButton.setLayoutData(buttonDataGrid);
-
 		mButton.addSelectionListener(new SelectionListener() {
 
 			@Override
