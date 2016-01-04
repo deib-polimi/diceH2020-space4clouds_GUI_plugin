@@ -11,13 +11,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 
-import eu.diceH2020.SPACE4Cloud_shared.InstanceData;
-import eu.diceH2020.s4c.plugin.other.SendState;
-import eu.diceH2020.s4c.plugin.other.Sender;
-import eu.diceH2020.s4c.plugin.other.State;
-import eu.diceH2020.s4c.plugin.other.StateChecker;
-import eu.diceH2020.s4c.plugin.other.StateHandler;
-
 class GroupCommands extends Composite {
 
 	  public GroupCommands(Composite parent) {
@@ -67,45 +60,5 @@ class GroupCommands extends Composite {
 //		createSendRunningStateButton(this);
 
 	  }
-	  
-		/**
-		 * @param parent
-		 */
-		private void createSendRunningStateButton(Composite parent) {
-			Button sendRunningStateButton = new Button(parent, SWT.WRAP);
-			sendRunningStateButton.setText("Run");
-			sendRunningStateButton.addListener(SWT.Selection, new Listener() {
-				@Override
-				public void handleEvent(Event event) {
-					SendState.sendStateRunning();
-				}
-			});
-		}
-
-		private static void createAskStateButton(Composite parent) {
-			Button askStateButton = new Button(parent, SWT.WRAP);
-			askStateButton.setText("ask state");
-
-			askStateButton.addListener(SWT.Selection, new Listener() {
-				@Override
-				public void handleEvent(Event event) {
-
-					StateChecker checker = new StateChecker();
-					// running timer task as daemon thread
-					Timer scheduler = new Timer(true);
-					// in this way the timer task is executed in a cyclic
-					// way
-					scheduler.scheduleAtFixedRate(checker, 0, 10 * 1000);
-					System.out.println("TimerTask started");
-
-					// todo: this cannot work
-					StateHandler stateHandler = new StateHandler();
-					if (stateHandler.getCurrentState() == State.RUNNING)
-						scheduler.cancel();
-				}
-			});
-		}
-	  
-	  
-	  
+  
 	}

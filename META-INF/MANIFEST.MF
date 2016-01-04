@@ -22,7 +22,10 @@ Bundle-ClassPath: .,
  target/dependency/jackson-core-asl-1.9.13.jar,
  target/dependency/jackson-mapper-asl-1.9.13.jar,
  target/dependency/json-20140107.jar,
- target/dependency/unirest-java-1.4.7.jar
+ target/dependency/unirest-java-1.4.7.jar,
+ target/dependency/SPACE4Cloud-shared-0.0.1-SNAPSHOT.jar,
+ target/dependency/json-schema-validator-2.2.6.jar,
+ target/dependency/guava-18.0.jar
 Export-Package: eu.diceH2020.s4c.plugin;uses:="org.osgi.framework,org.eclipse.jface.resource,org.eclipse.ui.plugin",
  eu.diceH2020.s4c.plugin.other,
  eu.diceH2020.s4c.plugin.views;uses:="org.eclipse.swt.widgets,org.eclipse.ui.part"

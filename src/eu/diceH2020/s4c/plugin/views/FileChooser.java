@@ -1,6 +1,10 @@
 package eu.diceH2020.s4c.plugin.views;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
@@ -11,6 +15,8 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Text;
+
+import it.polimi.diceH2020.SPACE4Cloud.shared.DataChecker;
 
 /**
  * @author ciavotta
@@ -68,6 +74,13 @@ public class FileChooser extends Composite {
 				String path = dlg.open();
 				if (path == null) return;
 				textBox.setText(path);
+				try {
+					DataChecker.getInstance().isValid(path);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 
 			@Override
@@ -100,6 +113,7 @@ public class FileChooser extends Composite {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
 
 
 }
