@@ -1,4 +1,4 @@
-package eu.diceH2020.s4c.plugin.views;
+package it.polimi.diceH2020.s4c.plugin.views;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;

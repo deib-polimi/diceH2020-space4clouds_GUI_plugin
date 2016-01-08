@@ -6,14 +6,14 @@
          point="org.eclipse.ui.views">
       <category
             name="S4C_View"
-            id="eu.diceH2020.s4c.plugin.view.S4C_View">
+            id="it.polimi.diceH2020.s4c.plugin.view.S4C_View">
       </category>
       <view
             name="SPACE4CLoud GUI view"
             icon="icons/sample.gif"
             category="DICE-H2020"
-            class="eu.diceH2020.s4c.plugin.views.S4C_View"
-            id="eu.diceH2020.s4c.plugin.views.S4C_View">
+            class="it.polimi.diceH2020.s4c.plugin.views.S4C_View"
+            id="it.polimi.diceH2020.s4c.plugin.views.S4C_View">
       </view>
    </extension>
    <extension
@@ -24,7 +24,7 @@
                ratio="0.5"
                relative="org.eclipse.ui.views.ProblemView"
                relationship="right"
-               id="eu.diceH2020.s4c.plugin.views.S4C_View">
+               id="it.polimi.diceH2020.s4c.plugin.views.S4C_View">
          </view>
       </perspectiveExtension>
    </extension>

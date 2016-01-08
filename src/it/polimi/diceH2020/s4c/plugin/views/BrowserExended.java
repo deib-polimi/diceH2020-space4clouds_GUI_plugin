@@ -1,4 +1,4 @@
-package eu.diceH2020.s4c.plugin.views;
+package it.polimi.diceH2020.s4c.plugin.views;
 
 import java.io.IOException;
 import java.net.URL;
@@ -14,7 +14,7 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.osgi.framework.Bundle;
 
-import eu.diceH2020.s4c.plugin.Activator;
+import it.polimi.diceH2020.s4c.plugin.Activator;
 
 public class BrowserExended {
 

@@ -1,4 +1,4 @@
-package eu.diceH2020.s4c.plugin.views;
+package it.polimi.diceH2020.s4c.plugin.views;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -17,9 +17,9 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.FileDialog;
 
-import eu.diceH2020.s4c.plugin.other.State;
-import eu.diceH2020.s4c.plugin.other.StateChecker;
-import eu.diceH2020.s4c.plugin.other.StateHandler;
+import it.polimi.diceH2020.s4c.plugin.other.State;
+import it.polimi.diceH2020.s4c.plugin.other.StateChecker;
+import it.polimi.diceH2020.s4c.plugin.other.StateHandler;
 
 public class SaveOpenButtons extends Composite {
 

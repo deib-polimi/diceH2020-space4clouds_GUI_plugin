@@ -1,4 +1,4 @@
-package eu.diceH2020.s4c.plugin.views;
+package it.polimi.diceH2020.s4c.plugin.views;
 
 import java.io.IOException;
 import java.net.URL;
@@ -15,7 +15,7 @@ import org.eclipse.swt.widgets.TabItem;
 import org.eclipse.ui.part.ViewPart;
 import org.osgi.framework.Bundle;
 
-import eu.diceH2020.s4c.plugin.Activator;
+import it.polimi.diceH2020.s4c.plugin.Activator;
 
 /**
  * @author ciavotta This View shows the widgets to interact with SPACE4Cloud WS

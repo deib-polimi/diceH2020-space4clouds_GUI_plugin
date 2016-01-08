@@ -1,4 +1,4 @@
-package eu.diceH2020.s4c.plugin;
+package it.polimi.diceH2020.s4c.plugin;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;

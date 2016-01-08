@@ -1,11 +1,11 @@
-package eu.diceH2020.s4c.plugin.views;
+package it.polimi.diceH2020.s4c.plugin.views;
 
 import java.io.File;
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.net.URL;
 
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -15,8 +15,11 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Text;
+import org.osgi.framework.Bundle;
 
 import it.polimi.diceH2020.SPACE4Cloud.shared.DataChecker;
+import it.polimi.diceH2020.s4c.plugin.Activator;
+import it.polimi.diceH2020.s4c.plugin.other.EclipseLocator;
 
 /**
  * @author ciavotta
@@ -75,7 +78,15 @@ public class FileChooser extends Composite {
 				if (path == null) return;
 				textBox.setText(path);
 				try {
-					DataChecker.getInstance().isValid(path);
+					EclipseLocator locator = new EclipseLocator();
+					DataChecker dc = DataChecker.getInstance(locator);
+//					Bundle bundle = Activator.getDefault().getBundle();
+//					IPath relPath = new Path(path);
+//					URL fileInPlugin = FileLocator.find(bundle, relPath, null);
+//					URL fileURL = FileLocator.toFileURL(fileInPlugin);
+					
+					System.out.println(dc.isValid(new File(path).toURI().toURL())); 
+//					dc.isValid(path);
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

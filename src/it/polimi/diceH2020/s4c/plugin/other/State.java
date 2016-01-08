@@ -1,4 +1,4 @@
-package eu.diceH2020.s4c.plugin.other;
+package it.polimi.diceH2020.s4c.plugin.other;
 
 public enum State {
 

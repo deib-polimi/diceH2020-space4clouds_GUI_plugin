@@ -1,4 +1,4 @@
-package eu.diceH2020.s4c.plugin.views;
+package it.polimi.diceH2020.s4c.plugin.views;
 
 import javax.swing.text.Style;
 

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package eu.diceH2020.s4c.plugin.views;
+package it.polimi.diceH2020.s4c.plugin.views;
 
 import java.net.MalformedURLException;
 import java.net.URL;

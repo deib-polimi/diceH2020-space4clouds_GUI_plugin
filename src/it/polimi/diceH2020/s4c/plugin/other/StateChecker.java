@@ -1,4 +1,4 @@
-package eu.diceH2020.s4c.plugin.other;
+package it.polimi.diceH2020.s4c.plugin.other;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -13,9 +13,9 @@ import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.widgets.Display;
 import org.osgi.framework.Bundle;
 
-import eu.diceH2020.s4c.plugin.Activator;
-import eu.diceH2020.s4c.plugin.views.BrowserExended;
-import eu.diceH2020.s4c.plugin.views.PropertiesSingleton;
+import it.polimi.diceH2020.s4c.plugin.Activator;
+import it.polimi.diceH2020.s4c.plugin.views.BrowserExended;
+import it.polimi.diceH2020.s4c.plugin.views.PropertiesSingleton;
 
 public class StateChecker extends TimerTask {
 
