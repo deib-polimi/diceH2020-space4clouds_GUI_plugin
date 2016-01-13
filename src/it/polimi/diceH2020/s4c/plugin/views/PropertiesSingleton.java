@@ -1,29 +1,29 @@
 package it.polimi.diceH2020.s4c.plugin.views;
 
 public class PropertiesSingleton {
-	
-	private  TextExtended address;
-	private  TextExtended port;
-	private  TextExtended username;
-	private  TextExtended password;
-	private  TextExtended accuracy;
-	private  TextExtended cycles;
+
+	private TextExtended address;
+	private TextExtended port;
+	private TextExtended username;
+	private TextExtended password;
+	private TextExtended accuracy;
+	private TextExtended cycles;
 	private BrowserExended browser;
+	private FileChooser inputData;
 	
 	private static PropertiesSingleton instance = null;
-	
-	public static PropertiesSingleton getInstance() {
-	      if(instance == null) {
-	         instance = new PropertiesSingleton();
-	      }
-	      return instance;
-	   }
 
-	
-	public String getAddressString(){
+	public static PropertiesSingleton getInstance() {
+		if (instance == null) {
+			instance = new PropertiesSingleton();
+		}
+		return instance;
+	}
+
+	public String getAddressString() {
 		return address.getTextBox().getText();
 	}
-	
+
 	/**
 	 * @return the address
 	 */
@@ -32,23 +32,23 @@ public class PropertiesSingleton {
 	}
 
 	/**
-	 * @param address the address to set
+	 * @param address
+	 *            the address to set
 	 */
 	public void setAddress(TextExtended address) {
 		this.address = address;
 	}
-	
-	public void setAddressString(String address){
+
+	public void setAddressString(String address) {
 		if (address != null) {
-			this.address.getTextBox().setText(address);			
+			this.address.getTextBox().setText(address);
 		}
 	}
 
-	public String getPortString(){
+	public String getPortString() {
 		return port.getTextBox().getText();
 	}
-	
-	
+
 	/**
 	 * @return the port
 	 */
@@ -57,18 +57,18 @@ public class PropertiesSingleton {
 	}
 
 	/**
-	 * @param port the port to set
+	 * @param port
+	 *            the port to set
 	 */
 	public void setPort(TextExtended port) {
 		this.port = port;
 	}
-	
+
 	public void setPortString(String port) {
 		if (port != null) {
-			this.port.getTextBox().setText(port);			
+			this.port.getTextBox().setText(port);
 		}
 	}
-
 
 	/**
 	 * @return the browser
@@ -77,14 +77,13 @@ public class PropertiesSingleton {
 		return browser;
 	}
 
-
 	/**
-	 * @param browser the browser to set
+	 * @param browser
+	 *            the browser to set
 	 */
 	public void setBrowser(BrowserExended browser) {
 		this.browser = browser;
 	}
-
 
 	/**
 	 * @return the username
@@ -97,9 +96,9 @@ public class PropertiesSingleton {
 		return username.getTextBox().getText();
 	}
 
-
 	/**
-	 * @param username the username to set
+	 * @param username
+	 *            the username to set
 	 */
 	public void setUsername(TextExtended username) {
 		this.username = username;
@@ -111,27 +110,26 @@ public class PropertiesSingleton {
 		}
 	}
 
-
 	/**
 	 * @return the password
 	 */
 	public TextExtended getPassword() {
 		return password;
 	}
+
 	public String getPasswordString() {
 		return password.getTextBox().getText();
 	}
 
-	public void setPassword(TextExtended password){
+	public void setPassword(TextExtended password) {
 		this.password = password;
-	}	
-	
+	}
+
 	public void setPasswordString(String password) {
 		if (password != null) {
 			this.password.getTextBox().setText(password);
 		}
 	}
-
 
 	/**
 	 * @return the accuracy
@@ -139,12 +137,14 @@ public class PropertiesSingleton {
 	public TextExtended getAccuracy() {
 		return accuracy;
 	}
+
 	public String getAccuracyString() {
 		return accuracy.getTextBox().getText();
 	}
 
 	/**
-	 * @param accuracy the accuracy to set
+	 * @param accuracy
+	 *            the accuracy to set
 	 */
 	public void setAccuracy(TextExtended accuracy) {
 		this.accuracy = accuracy;
@@ -168,16 +168,25 @@ public class PropertiesSingleton {
 	}
 
 	/**
-	 * @param cycles the cycles to set
+	 * @param cycles
+	 *            the cycles to set
 	 */
 	public void setCycles(TextExtended cycles) {
 		this.cycles = cycles;
 	}
+
 	public void setCyclesString(String cycles) {
 		if (cycles != null) {
 			this.cycles.getTextBox().setText(cycles);
 		}
 	}
 
-	
+	public FileChooser getInputData() {
+		return inputData;
+	}
+
+	public void setInputData(FileChooser inputData) {
+		this.inputData = inputData;
+	}
+
 }

@@ -1,5 +1,8 @@
 package it.polimi.diceH2020.s4c.plugin.views;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -8,8 +11,13 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 
+import it.polimi.diceH2020.s4c.plugin.other.RestInteractor;
+
 public class ExecuteButton extends Composite {
 
+
+	private PropertiesSingleton prop = PropertiesSingleton.getInstance();
+	
 	public ExecuteButton(Composite parent) {
 		super(parent, SWT.BORDER);
 		GridLayout layout = new GridLayout(2, true);
@@ -21,12 +29,11 @@ public class ExecuteButton extends Composite {
 		panelDataGrid.grabExcessVerticalSpace = false;
 		panelDataGrid.verticalAlignment = SWT.BOTTOM;
 		this.setLayoutData(panelDataGrid);
-//		this.setSize(parent.getSize());
+
 		createContent();
 	}
 
 	private void createContent() {
-		// TODO Auto-generated method stub
 		Button empty = new Button(this, SWT.PUSH);
 		GridData gridData1 = new GridData();
 		gridData1.grabExcessHorizontalSpace = true;
@@ -36,20 +43,23 @@ public class ExecuteButton extends Composite {
 		Button execute = new Button(this, SWT.PUSH);
 		execute.setText("Start");
 		execute.setAlignment(SWT.RIGHT);
-//		GridData gridData = new GridData();
-//		gridData.grabExcessHorizontalSpace = false;
-//		gridData.grabExcessVerticalSpace = false;
-//		gridData.horizontalAlignment = SWT.RIGHT;
-//		gridData.verticalAlignment = SWT.BOTTOM;
-//		//gridData.horizontalIndent  = 150;
-//		save.setLayoutData(gridData);
 		
 		execute.addSelectionListener(new SelectionListener() {
 			
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
-				// TODO Auto-generated method stub
-				
+				if (prop.getInputData().isJsonLoaded()) {
+					URL url;
+					try {
+						url = new URL("http://" + prop.getAddressString() + ":" + prop.getPortString() + "/inputdata");
+						String json = prop.getInputData().getJson();
+						RestInteractor.postData(json, url);
+					} catch (MalformedURLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
+				}
 			}
 			
 			@Override
